@@ -43,7 +43,7 @@ import java.util.stream.Collectors;
 public final class SimpleMessageProvider<T extends Enum<? extends LocalizedMessage>> extends MessageProvider {
     private final Class<T> messageClass;
 
-    public SimpleMessageProvider(KeyedDataSource dataSource, Class<T> messageClass) {
+    public SimpleMessageProvider(Class<T> messageClass, KeyedDataSource dataSource) {
         super(dataSource);
         this.messageClass = messageClass;
     }

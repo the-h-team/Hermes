@@ -30,7 +30,7 @@
  */
 package com.github.ms5984.hermes.spigot.impl;
 
-import com.github.ms5984.hermes.model.KeyedDataSource;
+import com.github.ms5984.hermes.model.FileKeyedDataSource;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -44,18 +44,17 @@ import java.io.IOException;
 /**
  * A KeyedDataSource implementation backed by a YamlConfiguration.
  */
-public final class BukkitYamlKeyedDataSource implements KeyedDataSource {
-    private final File file;
+public final class BukkitYamlKeyedDataSource extends FileKeyedDataSource {
     private final YamlConfiguration yamlConfiguration;
     private final ConfigurationSection section;
 
     public BukkitYamlKeyedDataSource(@Nullable File file, @NotNull YamlConfiguration yamlConfiguration) {
-        this.file = file;
+        super(file);
         this.yamlConfiguration = yamlConfiguration;
         this.section = yamlConfiguration;
     }
     public BukkitYamlKeyedDataSource(@Nullable File file, @NotNull YamlConfiguration yamlConfiguration, String prefix) {
-        this.file = file;
+        super(file);
         this.yamlConfiguration = yamlConfiguration;
         if (prefix != null && !prefix.isEmpty()) {
             this.section = yamlConfiguration.getConfigurationSection("prefix");

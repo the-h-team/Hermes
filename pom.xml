@@ -10,6 +10,7 @@
     <modules>
         <module>hermes-common</module>
         <module>hermes-spigot</module>
+        <module>hermes-bungeecord</module>
     </modules>
     <packaging>pom</packaging>
 
