@@ -30,28 +30,39 @@
  */
 package com.github.ms5984.hermes.model;
 
+import com.google.common.collect.ImmutableMap;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.LinkedList;
-import java.util.stream.Collectors;
+import java.util.Map;
 
 /**
- * Represents a basic message provider.
+ * A basic enum-based message provider.
+ *
+ * @since 1.0.0
  */
-public final class SimpleMessageProvider<T extends Enum<? extends LocalizedMessage>> extends MessageProvider {
-    private final Class<T> messageClass;
+public final class SimpleMessageProvider<T extends Enum<? extends KeySource>> extends MessageProvider {
+    private final Map<String, LocalizedMessage> messages;
 
     public SimpleMessageProvider(Class<T> messageClass, KeyedDataSource dataSource) {
         super(dataSource);
-        this.messageClass = messageClass;
+        final ImmutableMap.Builder<String, LocalizedMessage> builder = ImmutableMap.builder();
+        for (T enumConstant : messageClass.getEnumConstants()) {
+            final String key = ((KeySource) enumConstant).getKey();
+            builder.put(key, () -> new ConfiguredMessage() {
+                @Override
+                public @Nullable String get() {
+                    final String stringFromSource = SimpleMessageProvider.this.dataSource.getString(key);
+                    if (mapFunction == null) return stringFromSource;
+                    return mapFunction.apply(stringFromSource);
+                }
+            });
+        }
+        this.messages = builder.build();
     }
 
     @Override
-    public @NotNull Collection<LocalizedMessage> getMessages() {
-        return Arrays.stream(messageClass.getEnumConstants())
-                .map(LocalizedMessage.class::cast)
-                .collect(Collectors.toCollection(LinkedList::new));
+    public @NotNull Map<String, LocalizedMessage> getMessages() {
+        return messages;
     }
 }

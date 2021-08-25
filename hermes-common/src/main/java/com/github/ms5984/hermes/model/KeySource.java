@@ -28,28 +28,18 @@
  *  See the License for the specific language governing permissions and
  *  limitations under the License.
  */
-package com.github.ms5984.hermes.impl;
-
-import com.github.ms5984.hermes.model.KeyedDataSource;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
-import java.util.Properties;
+package com.github.ms5984.hermes.model;
 
 /**
- * A Java {@linkplain Properties}-based KeyedDataSource.
+ * Add key contract to enum/singleton-style implementations.
  *
  * @since 1.0.0
  */
-public abstract class PropertiesKeyedDataSource implements KeyedDataSource {
-    public final Properties properties;
-
-    public PropertiesKeyedDataSource(@NotNull Properties properties) {
-        this.properties = properties;
-    }
-
-    @Override
-    public final @Nullable String getString(String key) {
-        return properties.getProperty(key);
-    }
+public interface KeySource {
+    /**
+     * Get this object's config key.
+     *
+     * @return config key
+     */
+    String getKey();
 }

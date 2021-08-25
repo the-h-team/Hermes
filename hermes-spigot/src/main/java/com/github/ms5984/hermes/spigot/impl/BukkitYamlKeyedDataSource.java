@@ -43,6 +43,8 @@ import java.io.IOException;
 
 /**
  * A KeyedDataSource implementation backed by a YamlConfiguration.
+ *
+ * @since 1.0.0
  */
 public final class BukkitYamlKeyedDataSource extends FileKeyedDataSource {
     private final YamlConfiguration yamlConfiguration;

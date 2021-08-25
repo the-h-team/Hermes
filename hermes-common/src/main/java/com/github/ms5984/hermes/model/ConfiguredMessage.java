@@ -35,6 +35,8 @@ import org.jetbrains.annotations.Nullable;
 
 /**
  * Represents a message that can be customized.
+ *
+ * @since 1.0.0
  */
 public abstract class ConfiguredMessage {
 
