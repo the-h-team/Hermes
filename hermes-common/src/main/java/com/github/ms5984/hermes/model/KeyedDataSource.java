@@ -34,6 +34,8 @@ import org.jetbrains.annotations.Nullable;
 
 /**
  * Represents a String datasource that accepts String keys.
+ *
+ * @since 1.0.0
  */
 public interface KeyedDataSource {
     /**

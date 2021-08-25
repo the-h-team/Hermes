@@ -37,6 +37,8 @@ import java.util.Locale;
 
 /**
  * Represents a message that may be localized.
+ *
+ * @since 1.0.0
  */
 public interface LocalizedMessage {
 

@@ -36,6 +36,8 @@ import java.util.Collection;
 
 /**
  * Represents a message provider.
+ *
+ * @since 1.0.0
  */
 public abstract class MessageProvider {
     protected final KeyedDataSource dataSource;

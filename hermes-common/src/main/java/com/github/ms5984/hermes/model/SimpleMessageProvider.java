@@ -38,7 +38,9 @@ import java.util.LinkedList;
 import java.util.stream.Collectors;
 
 /**
- * Represents a basic message provider.
+ * A basic enum-based message provider.
+ *
+ * @since 1.0.0
  */
 public final class SimpleMessageProvider<T extends Enum<? extends LocalizedMessage>> extends MessageProvider {
     private final Class<T> messageClass;

@@ -36,6 +36,11 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Properties;
 
+/**
+ * A Java {@linkplain Properties}-based KeyedDataSource.
+ *
+ * @since 1.0.0
+ */
 public abstract class PropertiesKeyedDataSource implements KeyedDataSource {
     public final Properties properties;
 
