@@ -34,7 +34,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Map;
-import java.util.function.UnaryOperator;
+import java.util.function.Function;
 
 /**
  * Represents a message provider.
@@ -43,7 +43,7 @@ import java.util.function.UnaryOperator;
  */
 public abstract class MessageProvider {
     protected final KeyedDataSource dataSource;
-    protected UnaryOperator<String> mapFunction;
+    protected Function<@Nullable String, @Nullable String> mapFunction;
 
     protected MessageProvider(KeyedDataSource dataSource) {
         this.dataSource = dataSource;
@@ -62,7 +62,7 @@ public abstract class MessageProvider {
      *
      * @param mapFunction a mapping function (null to clear)
      */
-    public final void setMapFunction(@Nullable UnaryOperator<@Nullable String> mapFunction) {
+    public final void setMapFunction(@Nullable Function<@Nullable String, @Nullable String> mapFunction) {
         this.mapFunction = mapFunction;
     }
 
