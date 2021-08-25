@@ -30,39 +30,16 @@
  */
 package com.github.ms5984.hermes.model;
 
-import com.google.common.collect.ImmutableMap;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
-
-import java.util.Map;
-
 /**
- * A basic enum-based message provider.
+ * Add key contract to enum/singleton-style implementations.
  *
  * @since 1.0.0
  */
-public final class SimpleMessageProvider<T extends Enum<? extends KeySource>> extends MessageProvider {
-    private final Map<String, LocalizedMessage> messages;
-
-    public SimpleMessageProvider(Class<T> messageClass, KeyedDataSource dataSource) {
-        super(dataSource);
-        final ImmutableMap.Builder<String, LocalizedMessage> builder = ImmutableMap.builder();
-        for (T enumConstant : messageClass.getEnumConstants()) {
-            final String key = ((KeySource) enumConstant).getKey();
-            builder.put(key, () -> new ConfiguredMessage() {
-                @Override
-                public @Nullable String get() {
-                    final String stringFromSource = SimpleMessageProvider.this.dataSource.getString(key);
-                    if (mapFunction == null) return stringFromSource;
-                    return mapFunction.apply(stringFromSource);
-                }
-            });
-        }
-        this.messages = builder.build();
-    }
-
-    @Override
-    public @NotNull Map<String, LocalizedMessage> getMessages() {
-        return messages;
-    }
+public interface KeySource {
+    /**
+     * Get this object's config key.
+     *
+     * @return config key
+     */
+    String getKey();
 }

@@ -43,16 +43,7 @@ import java.util.Locale;
 public interface LocalizedMessage {
 
     /**
-     * Get the config key of this message.
-     *
-     * @return config key
-     */
-    @Nullable String key();
-
-    /**
      * Get the default message.
-     * <p>
-     * Gets the message's text for the default locale.
      *
      * @return message
      */
@@ -66,5 +57,7 @@ public interface LocalizedMessage {
      * @param locale the locale to use
      * @return message if present under the locale or null
      */
-    @Nullable ConfiguredMessage getForLocale(Locale locale);
+    default @Nullable ConfiguredMessage getForLocale(Locale locale) {
+        return null;
+    }
 }

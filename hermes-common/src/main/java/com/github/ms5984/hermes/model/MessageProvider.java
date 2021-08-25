@@ -31,8 +31,10 @@
 package com.github.ms5984.hermes.model;
 
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-import java.util.Collection;
+import java.util.Map;
+import java.util.function.UnaryOperator;
 
 /**
  * Represents a message provider.
@@ -41,9 +43,27 @@ import java.util.Collection;
  */
 public abstract class MessageProvider {
     protected final KeyedDataSource dataSource;
+    protected UnaryOperator<String> mapFunction;
 
     protected MessageProvider(KeyedDataSource dataSource) {
         this.dataSource = dataSource;
+    }
+
+    /**
+     * Set the mapping function to be performed on all messages
+     * as they are requested.
+     * <p>
+     * <b>Useful for color translation.</b>
+     * <p>
+     * The operation should be null-safe; it can both accept
+     * and return null.
+     * <p>
+     * A null value for the argument will clear the existing function.
+     *
+     * @param mapFunction a mapping function (null to clear)
+     */
+    public final void setMapFunction(@Nullable UnaryOperator<@Nullable String> mapFunction) {
+        this.mapFunction = mapFunction;
     }
 
     /**
@@ -51,5 +71,5 @@ public abstract class MessageProvider {
      *
      * @return message from this provider
      */
-    public abstract @NotNull Collection<LocalizedMessage> getMessages();
+    public abstract @NotNull Map<String, LocalizedMessage> getMessages();
 }
