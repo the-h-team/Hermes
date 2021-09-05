@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.github.ms5984.hermes</groupId>
+    <groupId>com.github.the-h-team</groupId>
     <artifactId>hermes</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <modules>
@@ -16,7 +16,8 @@
 
     <name>Hermes</name>
     <description>Manage your messages with ease.</description>
-    <url>https://github.com/ms5984/Hermes</url>
+    <url>https://github.com/the-h-team/Hermes</url>
+    <inceptionYear>2021</inceptionYear>
 
     <properties>
         <java.version>1.8</java.version>
@@ -45,9 +46,9 @@
     </developers>
 
     <scm>
-        <connection>scm:git:git://github.com/ms5984/Hermes.git</connection>
-        <developerConnection>scm:git:ssh://github.com:ms5984/Hermes.git</developerConnection>
-        <url>http://github.com/ms5984/Hermes/tree/master</url>
+        <connection>scm:git:git://github.com/the-h-team/Hermes.git</connection>
+        <developerConnection>scm:git:ssh://github.com:the-h-team/Hermes.git</developerConnection>
+        <url>http://github.com/the-h-team/Hermes/tree/master</url>
     </scm>
 
     <distributionManagement>
@@ -91,7 +92,7 @@
                         <configuration>
                             <filters>
                                 <filter>
-                                    <artifact>*:*</artifact>
+                                    <artifact>com.github.the-h-team:hermes-common</artifact>
                                     <excludes>
                                         <exclude>META-INF/MANIFEST.MF</exclude>
                                     </excludes>
