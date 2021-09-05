@@ -44,9 +44,9 @@ import java.util.regex.Pattern;
 public abstract class AbstractColorUtil {
     /**
      * Regex matching hex color codes in the following general forms:
-     * <pre>&#AABBCC</pre> All uppercase
-     * <pre>&#aabbcc</pre> All lowercase
-     * <pre>&#aAbBcC</pre> Mixed casing
+     * <pre>{@literal &}#AABBCC</pre> All uppercase
+     * <pre>{@literal &}#aabbcc</pre> All lowercase
+     * <pre>{@literal &}#aAbBcC</pre> Mixed casing
      */
     protected static final Pattern HEX_PATTERN = Pattern.compile("&(#(\\d|[A-F]|[a-f]){6})");
 
