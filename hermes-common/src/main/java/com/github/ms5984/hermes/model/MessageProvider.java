@@ -30,6 +30,8 @@
  */
 package com.github.ms5984.hermes.model;
 
+import com.github.ms5984.hermes.api.HermesRegistry;
+import com.github.ms5984.hermes.api.RegisterAs;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -47,6 +49,7 @@ public abstract class MessageProvider {
 
     protected MessageProvider(KeyedDataSource dataSource) {
         this.dataSource = dataSource;
+        analyzeRegistrationAnnotation(this);
     }
 
     /**
@@ -72,4 +75,21 @@ public abstract class MessageProvider {
      * @return message from this provider
      */
     public abstract @NotNull Map<String, LocalizedMessage> getMessages();
+
+    /**
+     * Register this provider with {@link HermesRegistry} at the provided key.
+     *
+     * @param key a unique key
+     */
+    protected void registerProvider(@NotNull String key) {
+        new RegisterAs.Helper(key, this);
+    }
+
+    // Checks for annotation + registers at key if present
+    private static void analyzeRegistrationAnnotation(MessageProvider provider) {
+        final RegisterAs a = provider.getClass().getDeclaredAnnotation(RegisterAs.class);
+        if (a != null) {
+            provider.registerProvider(a.value());
+        }
+    }
 }
