@@ -32,6 +32,7 @@ package com.github.ms5984.hermes.api;
 
 import com.github.ms5984.hermes.model.MessageProvider;
 import com.google.common.collect.MapMaker;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Map;
@@ -46,7 +47,7 @@ import java.util.Map;
  * @since 1.0.0
  */
 public class HermesRegistry {
-    private static final Map<String, MessageProvider> instances = new MapMaker().weakValues().makeMap();
+    private static final Map<String, MessageProvider> PROVIDERS = new MapMaker().weakValues().makeMap();
 
     private HermesRegistry() {}
 
@@ -56,9 +57,9 @@ public class HermesRegistry {
      * @param providerKey a unique key
      * @param provider a provider instance
      */
-    static void register(String providerKey, MessageProvider provider) {
-        synchronized (instances) {
-            instances.put(providerKey, provider);
+    public static void register(@NotNull String providerKey, MessageProvider provider) {
+        synchronized (PROVIDERS) {
+            PROVIDERS.put(providerKey, provider);
         }
     }
 
@@ -69,6 +70,35 @@ public class HermesRegistry {
      * @return the provider or null
      */
     public static @Nullable MessageProvider getProvider(String providerKey) {
-        return instances.get(providerKey);
+        return PROVIDERS.get(providerKey);
+    }
+
+    /**
+     * Unregister a provider by its registration key.
+     *
+     * @param providerKey the registration key of the provider
+     * @return true only if a provider was removed
+     */
+    public static boolean unregister(@NotNull String providerKey) {
+        synchronized (PROVIDERS) {
+            return PROVIDERS.remove(providerKey) != null;
+        }
+    }
+
+    /**
+     * Unregister a provider by its instance in the registry.
+     *
+     * @param provider the provider instance in the registry
+     * @return true only if the provider was removed
+     */
+    public static boolean unregister(@NotNull MessageProvider provider) {
+        synchronized (PROVIDERS) {
+            for (String key : PROVIDERS.keySet()) {
+                if (PROVIDERS.remove(key, provider)) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }

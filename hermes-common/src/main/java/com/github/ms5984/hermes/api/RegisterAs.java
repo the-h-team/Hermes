@@ -30,7 +30,7 @@
  */
 package com.github.ms5984.hermes.api;
 
-import com.github.ms5984.hermes.model.MessageProvider;
+import org.jetbrains.annotations.NotNull;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -45,11 +45,10 @@ import java.lang.annotation.Target;
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface RegisterAs {
-    String value();
-
-    class Helper {
-        public <T extends MessageProvider> Helper(String providerKey, T provider) {
-            HermesRegistry.register(providerKey, provider);
-        }
-    }
+    /**
+     * Get the registration key for this class.
+     *
+     * @return the registration key for this class
+     */
+    @NotNull String value();
 }

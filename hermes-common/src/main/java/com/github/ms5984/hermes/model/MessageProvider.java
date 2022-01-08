@@ -44,11 +44,9 @@ import java.util.function.Function;
  * @since 1.0.0
  */
 public abstract class MessageProvider {
-    protected final KeyedDataSource dataSource;
     protected Function<@Nullable String, @Nullable String> mapFunction;
 
-    protected MessageProvider(KeyedDataSource dataSource) {
-        this.dataSource = dataSource;
+    {
         analyzeRegistrationAnnotation(this);
     }
 
@@ -82,7 +80,7 @@ public abstract class MessageProvider {
      * @param key a unique key
      */
     protected void registerProvider(@NotNull String key) {
-        new RegisterAs.Helper(key, this);
+        HermesRegistry.register(key, this);
     }
 
     // Checks for annotation + registers at key if present
