@@ -11,6 +11,7 @@
         <module>hermes-common</module>
         <module>hermes-spigot</module>
         <module>hermes-bungeecord</module>
+        <module>hermes-standalone</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -36,6 +37,11 @@
             <distribution>repo</distribution>
         </license>
     </licenses>
+
+    <organization>
+        <name>Sanctum</name>
+        <url>https://github.com/the-h-team</url>
+    </organization>
 
     <developers>
         <developer>
@@ -112,6 +118,10 @@
             <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
         </repository>
         <repository>
+            <id>bungeecord-repo</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </repository>
+        <repository>
             <id>sonatype</id>
             <url>https://oss.sonatype.org/content/groups/public/</url>
         </repository>
@@ -123,6 +133,20 @@
                 <groupId>org.spigotmc</groupId>
                 <artifactId>spigot-api</artifactId>
                 <version>1.16.5-R0.1-SNAPSHOT</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>net.md-5</groupId>
+                <artifactId>bungeecord-api</artifactId>
+                <version>1.16-R0.5-SNAPSHOT</version>
+                <type>jar</type>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
+                <groupId>net.md-5</groupId>
+                <artifactId>bungeecord-api</artifactId>
+                <version>1.16-R0.5-SNAPSHOT</version>
+                <type>javadoc</type>
                 <scope>provided</scope>
             </dependency>
         </dependencies>
@@ -169,7 +193,7 @@
                         <artifactId>maven-javadoc-plugin</artifactId>
                         <version>3.2.0</version>
                         <configuration>
-                            <doclint>missing,reference,syntax</doclint>
+                            <doclint>missing,reference</doclint>
                         </configuration>
                         <executions>
                             <execution>

@@ -1,0 +1,5 @@
+main: com.github.ms5984.hermes.bungeecord.HermesBungeePlugin
+name: HermesStandalone
+version: ${project.version}
+description: ${project.description}
+author: ${project.organization.name}

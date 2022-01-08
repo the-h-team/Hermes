@@ -103,6 +103,7 @@ public abstract class FixedMessageProvider extends AbstractMessageProvider {
      *
      * @param enumClass an enum class implementing {@link KeySource}
      * @param defSource a keyed data source
+     * @param <T> the enum
      * @return a new fixed-keyed message provider
      */
     public static <T extends Enum<? extends KeySource>> EnumKeySourceMessageProvider<T> enumAsKeySource(@NotNull Class<T> enumClass, @NotNull KeyedDataSource defSource) {
@@ -115,6 +116,7 @@ public abstract class FixedMessageProvider extends AbstractMessageProvider {
      *
      * @param enumClass an enum class
      * @param defSource a keyed data source
+     * @param <T> the enum
      * @return a new fixed-keyset message provider
      */
     public static <T extends Enum<?>> EnumNameMessageProvider<T> enumConstantNamesAsKey(@NotNull Class<T> enumClass, @NotNull KeyedDataSource defSource) {
