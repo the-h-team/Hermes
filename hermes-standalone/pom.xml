@@ -32,10 +32,10 @@
                                     <excludes>
                                         <exclude>META-INF/MANIFEST.MF</exclude>
                                         <exclude>META-INF/maven/com.github.the-h-team/hermes-common/*</exclude>
-                                        <exclude>com/github/ms5984/hermes/api/*</exclude>
-                                        <exclude>com/github/ms5984/hermes/impl/*</exclude>
-                                        <exclude>com/github/ms5984/hermes/model/*</exclude>
-                                        <exclude>com/github/ms5984/hermes/util/*</exclude>
+                                        <exclude>com/github/sanctum/hermes/api/*</exclude>
+                                        <exclude>com/github/sanctum/hermes/impl/*</exclude>
+                                        <exclude>com/github/sanctum/hermes/model/*</exclude>
+                                        <exclude>com/github/sanctum/hermes/util/*</exclude>
                                     </excludes>
                                 </filter>
                                 <filter>
@@ -43,10 +43,10 @@
                                     <excludes>
                                         <exclude>META-INF/MANIFEST.MF</exclude>
                                         <exclude>META-INF/maven/com.github.the-h-team/hermes-common/*</exclude>
-                                        <exclude>com/github/ms5984/hermes/api/*</exclude>
-                                        <exclude>com/github/ms5984/hermes/impl/*</exclude>
-                                        <exclude>com/github/ms5984/hermes/model/*</exclude>
-                                        <exclude>com/github/ms5984/hermes/util/*</exclude>
+                                        <exclude>com/github/sanctum/hermes/api/*</exclude>
+                                        <exclude>com/github/sanctum/hermes/impl/*</exclude>
+                                        <exclude>com/github/sanctum/hermes/model/*</exclude>
+                                        <exclude>com/github/sanctum/hermes/util/*</exclude>
                                     </excludes>
                                 </filter>
                             </filters>

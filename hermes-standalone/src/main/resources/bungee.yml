@@ -1,4 +1,4 @@
-main: com.github.ms5984.hermes.bungeecord.HermesBungeePlugin
+main: com.github.sanctum.hermes.bungeecord.HermesBungeePlugin
 name: HermesStandalone
 version: ${project.version}
 description: ${project.description}

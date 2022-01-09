@@ -1,4 +1,4 @@
-main: com.github.ms5984.hermes.spigot.HermesSpigotPlugin
+main: com.github.sanctum.hermes.spigot.HermesSpigotPlugin
 name: HermesStandalone
 version: ${project.version}
 description: ${project.description}
