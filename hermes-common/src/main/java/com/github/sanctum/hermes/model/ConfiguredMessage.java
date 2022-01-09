@@ -47,7 +47,7 @@ public abstract class ConfiguredMessage {
      *
      * @return raw message text
      */
-    public abstract @Nullable String get();
+    public abstract @Nullable String raw();
 
     /**
      * Replace placeholders with objects.
@@ -71,7 +71,7 @@ public abstract class ConfiguredMessage {
      */
     @Override
     public final @NotNull String toString() {
-        return String.valueOf(get());
+        return String.valueOf(raw());
     }
 
 }

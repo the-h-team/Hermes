@@ -47,7 +47,7 @@ public interface LocalizedMessage {
      *
      * @return message
      */
-    @NotNull ConfiguredMessage get();
+    @NotNull ConfiguredMessage getDefault();
 
     /**
      * Get the message under the given locale.

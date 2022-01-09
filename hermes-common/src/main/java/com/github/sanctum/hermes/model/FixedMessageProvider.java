@@ -59,7 +59,7 @@ public abstract class FixedMessageProvider extends AbstractMessageProvider {
             builder.put(key, new LocalizedMessage() {
                 final ConfiguredMessage defaultMessage = new ConfiguredMessage() {
                     @Override
-                    public @Nullable String get() {
+                    public @Nullable String raw() {
                         final String stringFromSource = FixedMessageProvider.this.dataSource.getString(key);
                         if (mapFunction == null) return stringFromSource;
                         return mapFunction.apply(stringFromSource);
@@ -67,7 +67,7 @@ public abstract class FixedMessageProvider extends AbstractMessageProvider {
                 };
 
                 @Override
-                public @NotNull ConfiguredMessage get() {
+                public @NotNull ConfiguredMessage getDefault() {
                     return defaultMessage;
                 }
 
@@ -77,7 +77,7 @@ public abstract class FixedMessageProvider extends AbstractMessageProvider {
                             .map(WeakReference::new)
                             .map(kds -> new ConfiguredMessage() {
                                 @Override
-                                public @Nullable String get() {
+                                public @Nullable String raw() {
                                     final KeyedDataSource dataSource = kds.get();
                                     if (dataSource == null) return null;
                                     final String stringFromSource = dataSource.getString(key);
