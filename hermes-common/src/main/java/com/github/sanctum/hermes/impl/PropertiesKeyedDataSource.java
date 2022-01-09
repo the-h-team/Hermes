@@ -38,12 +38,25 @@ import java.util.Properties;
 
 /**
  * A Java {@linkplain Properties}-based KeyedDataSource.
+ * <p>
+ * <i>This class exposes the contained Properties instance as
+ * <code>public final</code>; care should be taken to limit the
+ * accessibility of these objects to those that may safely
+ * mutate the Properties instance.</i>
  *
  * @since 1.0.0
  */
-public abstract class PropertiesKeyedDataSource implements KeyedDataSource {
+public class PropertiesKeyedDataSource implements KeyedDataSource {
+    /**
+     * The backing properties instance.
+     */
     public final Properties properties;
 
+    /**
+     * Create a Properties-based keyed data source.
+     *
+     * @param properties a Properties instance
+     */
     public PropertiesKeyedDataSource(@NotNull Properties properties) {
         this.properties = properties;
     }
@@ -52,4 +65,7 @@ public abstract class PropertiesKeyedDataSource implements KeyedDataSource {
     public final @Nullable String getString(String key) {
         return properties.getProperty(key);
     }
+
+    @Override
+    public void reload() {}
 }
