@@ -31,11 +31,6 @@
             <url>https://www.apache.org/licenses/LICENSE-2.0</url>
             <distribution>repo</distribution>
         </license>
-        <license>
-            <name>GNU Lesser General Public License v3.0 only</name>
-            <url>https://www.gnu.org/licenses/lgpl-3.0-standalone.html</url>
-            <distribution>repo</distribution>
-        </license>
     </licenses>
 
     <organization>

@@ -13,6 +13,14 @@
     <name>Hermes-Plugin</name>
     <description>A standalone distribution of Hermes for Spigot and Bungeecord</description>
 
+    <licenses>
+        <license>
+            <name>GNU Lesser General Public License v3.0 only</name>
+            <url>https://www.gnu.org/licenses/lgpl-3.0-standalone.html</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
     <build>
         <plugins>
             <plugin>
